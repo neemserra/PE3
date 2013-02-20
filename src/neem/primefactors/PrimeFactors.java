@@ -1,5 +1,6 @@
 package neem.primefactors;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.math.*;
 
@@ -10,18 +11,27 @@ public class PrimeFactors {
 	 * It has a function that outputs the largest prime factor
 	 */
 	
-	private double maxValue;
+	private int maxValue;
 
 	public PrimeFactors(int maxValue) {
 		this.maxValue = maxValue;
 	}
 
-	public List<Integer> generate(double maxValue) {
-		double squareRoot = Math.sqrt(maxValue);
-		int highestNumber = (int)squareRoot;
+	public List<Integer> generatePrimesList(int maxValue) {
+		List<Integer> generatedPrimes = new ArrayList<Integer>();
+		
+		int potentialPrime = 2;
+		while (maxValue > 1){
+			while (maxValue % potentialPrime == 0){
+				generatedPrimes.add(potentialPrime);
+				maxValue /= potentialPrime;
+			}
+			potentialPrime += 1;
+		}
 		
 		return generatedPrimes;
 	}
+
 
 	public Integer largest(List<Integer> expectedPrimeFactors) {
 		Integer largestPrime = 0;

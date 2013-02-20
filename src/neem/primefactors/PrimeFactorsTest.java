@@ -19,12 +19,12 @@ public class PrimeFactorsTest {
 	
 	
 	@Test
-	public final void testGenerate() {
+	public final void testGeneratePrimesList() {
 		//Assemble
 		List<Integer> expectedPrimeFactors = Arrays.asList(5, 7, 13, 29);
 		
 		//Act
-		List<Integer> actualPrimeFactors = testObject.generate(maxValue);
+		List<Integer> actualPrimeFactors = testObject.generatePrimesList(maxValue);
 		
 		//Assert
 		assertEquals(expectedPrimeFactors, actualPrimeFactors);
@@ -41,5 +41,12 @@ public class PrimeFactorsTest {
 		
 		//Assert
 		assertEquals(expectedLargestPrime, actualLargestPrime);
+	}
+	
+	@Test
+	public final void testLargestPrime() {		
+		List<Integer> primeTestList = testObject.generatePrimesList(600851475143);
+		Integer largestTestPrime = testObject.largest(primeTestList);
+		System.out.println(largestTestPrime);
 	}
 }
